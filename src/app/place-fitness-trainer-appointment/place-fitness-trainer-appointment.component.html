@@ -1,0 +1,223 @@
+<div style="margin: 30px; ">
+
+  <div *ngIf="!editMode;else editModeH2">
+      <h2>Place Your Appoinment</h2>
+  </div>
+
+  <ng-template #editModeH2>
+  <h2>Update Your Appoinment</h2>
+</ng-template>
+  
+
+
+  <form [formGroup]="fitnessForm" (ngSubmit)="onSubmit()">
+      <fieldset style="margin: 25px 10px;">
+          <legend>Personal Details</legend>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                  <label for="inputEmail4">First Name</label>
+                  <input appAutoFocus  type="text" class="form-control" id="inputEmail4" placeholder="First Name" autofocus formControlName="firstname">
+                  <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.firstname.touched && fitnessForm.controls.firstname.errors?.required">
+                  First Name Required!
+              </small>
+                </div>
+              <div class="form-group col-md-6">
+                  <label for="inputPassword4">Last Name</label>
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="Last Name" formControlName="lastname">
+                  <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.lastname.touched && fitnessForm.controls.lastname.errors?.required">
+                  Last Name Required!
+              </small>
+                </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-4">
+                  <label for="inputEmail4">Age</label>
+                  <input type="number" class="form-control" id="inputEmail4" placeholder="Age" formControlName="age">
+                  <small class="form-text text-danger"
+                  *ngIf="fitnessForm.controls.age.touched && fitnessForm.controls.age.errors?.required">
+                  Age Required!
+              </small>
+              <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.age.touched && fitnessForm.controls.age.errors?.min">
+                  Age Must Be Greater Than or Equal to 18
+              </small>
+              <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.age.touched && fitnessForm.controls.age.errors?.max">
+                  Age Must Be Lesser Than or Equal to 60
+              </small>
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="phone">Phone Number</label>
+                  <input type="number" class="form-control" id="phone" placeholder="Phone Number" formControlName="phonenumber">
+                  <small class="form-text text-danger"
+                  *ngIf="fitnessForm.controls.phonenumber.touched && fitnessForm.controls.phonenumber.errors?.required">
+                  Phone Number Required!
+              </small>
+              <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.phonenumber.touched && fitnessForm.controls.phonenumber.errors?.pattern">
+                  Phone Number Must be of 10 Digits
+              </small>
+              </div>
+              
+              <div class="form-group col-md-4">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email-ID" formControlName="email">
+                  <small class="form-text text-danger"
+                  *ngIf="fitnessForm.controls.email.touched && fitnessForm.controls.email.errors?.required">
+                   Email-ID Required!
+              </small>
+              <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.email.touched && fitnessForm.controls.email.errors?.pattern">
+                  Must be an Email. For Ex (john@doe.com)
+              </small>
+              </div>
+              
+              
+          </div>
+      </fieldset>
+
+      <fieldset style="margin: 20px 10px;">
+          <legend> Adress Details:</legend>
+          <div class="form-group">
+              <label for="inputAddress">Street Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="Street Address" formControlName="streetaddress">
+              <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.streetaddress.touched && fitnessForm.controls.streetaddress.errors?.required">
+                  Address Required
+              </small>  
+            </div>
+
+          <div class="form-row">
+              <div class="form-group col-md-4">
+                  <label for="inputCity">City</label>
+                  <input type="text" class="form-control" id="inputCity" placeholder="City" formControlName="city">
+                  <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.city.touched && fitnessForm.controls.city.errors?.required">
+                  City Required
+              </small>
+                </div>
+              <div class="form-group col-md-3">
+                  <label for="inputState">State</label>
+                  <input type="text" class="form-control" id="inputState" placeholder="State" formControlName="state">
+                  <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.state.touched && fitnessForm.controls.state.errors?.required">
+                  State Required
+              </small>  
+                </div>
+              <div class="form-group col-md-3">
+                  <label for="inputState">Country</label>
+                  <input type="text" class="form-control" id="inputCountry" placeholder="Country" formControlName="country">
+                  <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.country.touched && fitnessForm.controls.country.errors?.required">
+                  Country Required
+              </small>
+                </div>
+              <div class="form-group col-md-2">
+                  <label for="inputZip">Pincode</label>
+                  <input type="text" class="form-control" id="inputZip" placeholder="Pincode" formControlName="pincode">
+                  <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.pincode.touched && fitnessForm.controls.pincode.errors?.required">
+                  Pincode Required
+              </small>
+                  <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.pincode.touched && fitnessForm.controls.pincode.errors?.minlength">
+                  Pincode Must be of 6 Digit
+              </small>
+                  <small class="form-text text-danger "
+                  *ngIf="fitnessForm.controls.pincode.touched && fitnessForm.controls.pincode.errors?.maxlength">
+                  Pincode Must be of 6 Digit
+              </small>
+               
+                </div>
+          </div>
+
+      </fieldset>
+
+      <fieldset style="margin: 20px 10px;">
+          <legend>Trainer Preference</legend>
+          <div class="form-row">
+              <div class="form-check form-check-inline prefradio col-md-3 my-2">
+                  <input class="form-check-input" type="radio" id="maleRadio" name="trainerpreference" value="MALE" formControlName="trainerpreference">
+                  <label class="form-check-label" for="maleRadio">Male</label>
+              </div>
+              <div class="form-check form-check-inline prefradio col-md-3 my-2">
+                  <input class="form-check-input" type="radio" id="femaleRadio" name="trainerpreference" value="FEMALE" formControlName="trainerpreference">
+                  <label class="form-check-label" for="femaleRadio">Female</label>
+              </div>
+              <div class="form-check form-check-inline prefradio col-md-3 my-2">
+                  <input class="form-check-input" type="radio" id="anyRadio" name="trainerpreference" value="ANY" formControlName="trainerpreference">
+                  <label class="form-check-label" for="anyRadio">Any</label>
+              </div>
+          </div>
+          
+      </fieldset>
+
+      <fieldset style="margin: 20px 10px;">
+          <legend>Package</legend>
+          <div class="form-row">
+              <div class="col-md-3 col-lg-3 col-sm-3">
+                  <label class="labelcard card" >
+                  <input type="radio" name="packages" class="card-input-element"  formControlName="packages" value="BASIC" (change)='updatePrice("BASIC")'/>
+                  <div class="card-body card-input" style="text-align: center;">
+                    <h5 class="card-title pb-2" style="border-bottom: 1px solid black;">Basic</h5>
+                      <h6 class="card-text">
+                        INR 3000
+                    </h6>
+                  </div>
+                </label>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-3">
+                  <label class="labelcard card">
+                <input type="radio" name="packages" class="card-input-element"  formControlName="packages" value="INTERMEDIATE" (change)='updatePrice("INTERMEDIATE")'/>
+                <div class="card-body card-input" style="text-align: center;">
+                  <h5 class="card-title pb-2" style="border-bottom: 1px solid black;">Intermediate</h5>
+                    <h6 class="card-text">
+                      INR 6000
+                  </h6>
+                </div>
+              </label>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-3">
+                  <label class="labelcard card">
+              <input type="radio" name="packages" class="card-input-element"  formControlName="packages" value="ADVANCED" (change)='updatePrice("ADVANCED")'/>
+              <div class="card-body card-input" style="text-align: center;">
+                <h5 class="card-title pb-2" style="border-bottom: 1px solid black;">Advanced</h5>
+                  <h6 class="card-text">
+                    INR 10000
+                </h6>
+              </div>
+            </label>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-3">
+                  <label class="labelcard card">
+            <input type="radio" name="packages" class="card-input-element"   formControlName="packages" value="PROFESSIONAL" (change)='updatePrice("PROFESSIONAL")'/>
+            <div class="card-body card-input" style="text-align: center;">
+              <h5 class="card-title pb-2" style="border-bottom: 1px solid black;">Professional</h5>
+                <h6 class="card-text">
+                  INR 12000
+              </h6>
+            </div>
+          </label>
+              </div>
+          </div>
+      </fieldset>
+      <fieldset>
+          <div class="row p-2" style="text-align: center;">
+              <h2 class="col col-md-4 col-sm-12 col-lg-4">Total Cost: <br><span><h2 style="display: inline-block;" >INR <span id="inr">00</span>.<span id="paisa">00</span></h2>
+              </span>
+              </h2>
+              <button type="submit" class="btn btn-success btn-block col col-md-8 col-sm-12 col-lg-8" [disabled]="!fitnessForm.valid ">
+                 <span *ngIf="!editMode;else editModeBtn"> Place Appoinment</span></button>
+          </div>
+      </fieldset>
+  </form>
+
+</div>
+
+
+
+  <ng-template #editModeBtn>
+  <h2>Update  Appoinment</h2>
+</ng-template>

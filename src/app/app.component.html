@@ -1,0 +1,56 @@
+<nav class="navbar navbar-light bg-light" >
+    <div class="row mx-auto p-2" style="text-align: center;">
+        <a class="navbar-brand" routerLink="/" >
+            <img src="https://via.placeholder.com/100" width="150" height="100" alt="">
+          </a>
+    </div>
+    
+    <div class="row mx-auto" style="text-align: center;">
+        <h1 class="col col-12">COMPNAY NAME</h1>
+        <h3 class="col col-12">I am the tag line of the company!</h3>
+    </div>
+  </nav>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navBar">
+  <a class="navbar-brand" style="font-size:30px;cursor:pointer" (click)="snav.toggle()">&#9776;</a>
+  <a class="navbar-brand" routerLink="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="nav-link" routerLink="place-fitness-trainer-appointment" routerLinkActive="active">Place Appointment</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link " routerLink="view-appointment" routerLinkActive="active">View Appointment</a>
+          </li>
+          <li class="nav-item ">
+              <a class="nav-link" routerLink="view-appointment" routerLinkActive="active">Search</a>
+          </li>
+          <li class="nav-item ">
+              <a class="nav-link " routerLink="contact-us" routerLinkActive="active">Contact Us</a>
+          </li>
+      </ul>
+  </div>
+</nav>
+
+
+
+<mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+  <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" [fixedTopGap]="mobileQuery.matches ? 56 : 0">
+    <a class="navbar-brand" style="font-size:30px;cursor:pointer;display: block;float: right;" (click)="snav.toggle()">X</a>  
+    <mat-nav-list>
+          <a mat-list-item routerLink="/" class="sideNavItems">Home</a>
+          <a mat-list-item routerLink="place-fitness-trainer-appointment" class="sideNavItems" routerLinkActive="active">Place Appointment</a>
+          <a mat-list-item routerLink="view-appointment" class="sideNavItems" routerLinkActive="active">View Appointment</a>
+          <a mat-list-item routerLink="view-appointment" class="sideNavItems" routerLinkActive="active">Search</a>
+          <a mat-list-item routerLink="contact-us" class="sideNavItems" routerLinkActive="active">Contact Us</a>
+      </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

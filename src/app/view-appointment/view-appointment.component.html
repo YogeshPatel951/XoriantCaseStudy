@@ -1,0 +1,47 @@
+<div class="table-responsive-md" style="margin: 30px; text-align: center;">
+  <div class="col-sm-12" style="padding-top:20px;padding-bottom:30px;" >  
+    <input class="form-control" type="text" placeholder="Search Appoinments By Name, Package, Etc.." [(ngModel)]="filter">        
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="h1">Sl NO</th>
+            <th class="h2">Name</th>
+            <th class="h3">Address</th>
+            <th class="h4">City</th>
+            <th class="h5">Package</th>
+            <th class="h6">Trainer Preference</th>
+            <th class="h7">Phone</th>
+            <th class="h8">Update</th>
+            <th class="h9">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let human of humans | filter:filter | paginate: { itemsPerPage: 20, currentPage: p }">
+          <td>{{human.id}}</td>
+          <td>{{human.firstname}} {{human.lastname}}</td>
+          <td>{{human.streetaddress}}</td>
+          <td>{{human.city}}</td>
+          <td>{{human.packages}}</td>
+          <td>{{human.trainerpreference}}</td>
+          <td>{{human.phonenumber}}</td>
+          <td>
+            <a class="btn btn-outline-warning btn-sm" (click)="updatemydata(human.id)">Update</a>
+          </td>
+          <td>
+            <a class="btn btn-danger btn-sm" (click)="deletemydata(human.id)">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+      <nav aria-label="Page navigation">
+      <ul class="pagination m-3 justify-content-center">  
+        <pagination-controls (pageChange)="p = $event" class="page-item" responsive="true"></pagination-controls>  
+        </ul>
+      </nav>
+</table>
+</div>
+
+
+
+
+ 
